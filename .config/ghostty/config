@@ -2,16 +2,18 @@
 # font-family = Jetbrains Mono
 # font-size = 13
 
-window-padding-x = 20
-window-padding-y = 20
+window-padding-x = 5
+window-padding-y = 5 
 # window-width = 140
 # window-height = 35
 # window-save-state = always
 # auto-update = download
-background-opacity = 0.95
+background-opacity = 0.90
 
-window-decoration = false
+# window-decoration = false
+#
+adjust-cell-height = 40%
 
 gtk-tabs-location = bottom
-shell-integration-features = no-cursor,sudo,no-title
+# shell-integration-features = no-cursor,sudo,no-title
 # copy-on-select = clipboard
