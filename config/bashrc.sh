@@ -4,7 +4,7 @@ DEV_ENV_HOME=~/Code/hasiburdev/dev-env
 
 source $DEV_ENV_HOME/config/alias.sh
 
-export PATH="$PATH":"$DEV_ENV_HOME/bin"
+export PATH="$PATH":"$DEV_ENV_HOME/bin:$DEV_ENV_HOME/dev-env-setup"
 
 # export PATH="$HOME/FlutterSdk/flutter/bin:$PATH"
 
