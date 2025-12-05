@@ -1,0 +1,26 @@
+#!/bin/bash
+
+echo "Cleaning cache data"
+
+echo "Cleaning pacman cache"
+
+sudo pacman -Sc --noconfirm
+
+
+echo "Cleaning yay cache"
+
+yay -Sc --noconfirm --aur
+
+echo "Cache cleaning complete"
+
+echo "Cleaning NPM cache"
+
+npm cache clean --force
+
+echo "NPM cache cleaned"
+
+echo "Cleaning PNPM cache"
+
+pnpm store prune
+
+echo "PNPM cache cleaned"

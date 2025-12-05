@@ -3,3 +3,6 @@
 DEV_ENV_HOME=~/Code/hasiburdev/dev-env
 
 chmod -R +x $DEV_ENV_HOME/bin
+chmod -R +x $DEV_ENV_HOME/install
+
+chmod +x ./install-all
