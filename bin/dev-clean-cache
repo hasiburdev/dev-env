@@ -85,6 +85,13 @@ clean_docker() {
     fi
 }
 
+clean_flutter() {
+    if exists flutter; then
+        log "Cleaning flutter pub cache"
+        flutter pub cache clean
+    fi
+}
+
 
 main() {
     log "Starting system cleanup..."
@@ -107,6 +114,9 @@ main() {
 
     # Golang related cache
     clean_go
+
+    # Flutter related cache
+    clean_flutter
 
 }
 
