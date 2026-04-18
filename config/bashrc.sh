@@ -25,3 +25,4 @@ case ":$PATH:" in
 esac
 
 
+alias task='go-task'
