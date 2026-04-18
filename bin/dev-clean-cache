@@ -1,26 +1,115 @@
 #!/bin/bash
 
-echo "Cleaning cache data"
+log() {
+    echo -e "\n[INFO] $1"
+}
 
-echo "Cleaning pacman cache"
+warn() {
+    echo -e "\n[WARN] $1"
+}
 
-sudo pacman -Sc --noconfirm
+exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+clean_pacman() {
+    if exists pacman; then
+        log "Cleaning pacman cache"
+        sudo pacman -Sc --noconfirm
+    fi
+}
+
+clean_pnpm() {
+    if exists pnpm; then
+         log "Cleaning pnpm cache"
+        pnpm store prune
+    fi
+}
+
+clean_npm() {
+    if exists npm; then
+        log "Cleaning npm cache"
+        npm cache clean --force
+    fi
+}
+
+clean_yarn() {
+    if exists yarn; then
+        log "Cleaning yarn cache"
+        yarn cache clean
+    fi
+}
+
+clean_deno() {
+      if exists deno; then
+        log "Cleaning deno cache"
+        deno clean
+    fi
+}
+
+clean_yay() {
+    if exists yay; then
+        log "Cleaning yay cache"
+        yay -Sc --noconfirm --aur
+    fi
+}
 
 
-echo "Cleaning yay cache"
+clean_uv() {
+    if exists uv; then
+        log "Cleaning uv"
+        uv cache clean
+    fi
+}
 
-yay -Sc --noconfirm --aur
+clean_go() {
+    if exists go; then
+        log "Cleaning go cache"
+        go clean -cache
+        go clean -modcache
+        go clean -testcache
+    fi
+}
 
-echo "Cache cleaning complete"
+clean_journal() {
+    if exists journalctl; then
+        log "Cleaning systemd journal logs"
+        sudo journalctl --vacuum-time=7d
+    fi
+}
 
-echo "Cleaning NPM cache"
+clean_docker() {
+    if exists docker; then
+        log "Cleaning docker cache"
+        // TODO: Add docker cleanup commands here
+    fi
+}
 
-npm cache clean --force
 
-echo "NPM cache cleaned"
+main() {
+    log "Starting system cleanup..."
+    # Arch linux package manager cache
+    clean_pacman
+    clean_yay
 
-echo "Cleaning PNPM cache"
+    # System clean up
+    clean_journal
+    clean_docker
 
-pnpm store prune
+    # NodeJs related cache
+    clean_pnpm
+    clean_npm
+    clean_yarn
+    clean_deno
+    
+    # Python related cache
+    clean_uv
 
-echo "PNPM cache cleaned"
+    # Golang related cache
+    clean_go
+
+}
+
+main "$@"
+
+
