@@ -7,3 +7,5 @@ alias dud="docker compose up -d"
 
 alias dev="pnpm run dev"
 alias pdev="pnpm run dev"
+
+alias task='go-task'

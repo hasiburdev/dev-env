@@ -24,5 +24,12 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+export PATH="$HOME/develop/flutter/bin:$PATH"
 
-alias task='go-task'
+
+export PATH=$PATH:/home/hasibur/.local/bin
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/hasibur/.lmstudio/bin"
+# End of LM Studio CLI section
+
