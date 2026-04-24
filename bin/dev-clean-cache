@@ -17,7 +17,11 @@ exists() {
 clean_pacman() {
     if exists pacman; then
         log "Cleaning pacman cache"
-        sudo pacman -Sc --noconfirm
+            sudo rm -f /var/cache/pacman/pkg/download-* 2>/dev/null || true
+            if ! sudo pacman -Sc --noconfirm; then
+                warn "pacman cache clean failed, retrying fallback..."
+                sudo pacman -Scc --noconfirm
+            fi
     fi
 }
 
@@ -83,14 +87,14 @@ clean_journal() {
 clean_docker() {
     if exists docker; then
         log "Cleaning docker cache"
-        // TODO: Add docker cleanup commands here
+        # TODO: Add docker cleanup commands here
     fi
 }
 
 clean_flutter() {
     if exists flutter; then
         log "Cleaning flutter pub cache"
-        flutter pub cache clean
+        flutter pub cache clean -f
     fi
 }
 
