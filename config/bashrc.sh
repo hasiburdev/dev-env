@@ -13,7 +13,7 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 export ANDROID_HOME="$HOME/Android/Sdk"
 export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
 export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$ANDROID_HOME/cmdline-tools/latest/bin"
-export ANDROID_AVD_HOME=$HOME/.android/avd
+export ANDROID_AVD_HOME="$HOME/.android/avd"
 
 export CHROME_EXECUTABLE="google-chrome-stable"
 
@@ -27,9 +27,12 @@ esac
 export PATH="$HOME/develop/flutter/bin:$PATH"
 
 
-export PATH=$PATH:/home/hasibur/.local/bin
+export PATH="$PATH:/home/hasibur/.local/bin"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/hasibur/.lmstudio/bin"
 # End of LM Studio CLI section
+
+export PATH="$PATH:$HOME/go/bin"
+
 
