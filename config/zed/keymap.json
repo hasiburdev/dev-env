@@ -7,18 +7,66 @@
 // from the command palette.
 [
   {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+
+  {
     "context": "Workspace",
     "bindings": {
       // "shift shift": "file_finder::Toggle"
+      "ctrl-b": "workspace::ToggleRightDock"
     }
   },
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
       // "j k": "vim::NormalBefore"
+      "alt-h": "vim::Left",
+      "alt-l": "vim::Right",
+      "alt-j": "vim::Down",
+      "alt-k": "vim::Up"
     }
   },
 
+  // Vim visual mode binding
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp",
+      "c c": "editor::ToggleComments"
+    }
+  },
+
+  // Project Panel Binding
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "n": "project_panel::NewFile",
+      "shift-n": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      // Close project panel as project file panel on the right
+      "q": "workspace::ToggleRightDock",
+      "space e": "workspace::ToggleRightDock",
+      // Navigate between panel
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+
+  // Vim normal mode binding
   {
     "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
     "bindings": {
@@ -67,6 +115,7 @@
       "shift-q": "pane::CloseActiveItem",
       "ctrl-q": "pane::CloseActiveItem",
       "space b d": "pane::CloseActiveItem",
+      "space w": "pane::CloseActiveItem",
       // Close other items
       "space b o": "pane::CloseOtherItems",
       // Save file
@@ -77,10 +126,25 @@
       "space /": "pane::DeploySearch",
       // TODO: Open other files
       // Show project panel with current file
-      "space e": "workspace::ToggleLeftDock",
+      "space e": "workspace::ToggleRightDock",
 
       // +Terminal
-      "space t": "terminal_panel::ToggleFocus"
+      "space t": "terminal_panel::ToggleFocus",
+      "space p": "editor::Format",
+
+      "space v": "pane::SplitRight",
+      "space h": "workspace::ActivateNextPane",
+      "space l": "workspace::ActivatePreviousPane",
+
+      "alt-k": "editor::MoveLineUp",
+      "alt-j": "editor::MoveLineDown",
+
+      "space f n": "workspace::NewFile",
+
+      "ctrl-shift-k": "vim::ResizePaneUp",
+      "ctrl-shift-j": "vim::ResizePaneDown",
+      "ctrl-shift-h": "vim::ResizePaneLeft",
+      "ctrl-shift-l": "vim::ResizePaneRight"
     }
   },
 
@@ -88,7 +152,8 @@
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-q": "pane::CloseActiveItem"
+      "ctrl-q": "pane::CloseActiveItem",
+      "ctrl-/": "workspace::ToggleBottomDock"
     }
   },
 
@@ -101,5 +166,36 @@
       // Open recent project
       "space f p": "projects::OpenRecent"
     }
+  },
+
+  // Dock Binding
+  {
+    "context": "Dock",
+
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+      // ... or other keybindings
+    }
   }
+
+  // Vim operators
+  //
+  // {
+  //   "context": "Editor && vim_operator == c",
+  //   "bindings": {
+  //     "c": "vim::CurrentLine",
+  //     "r": "editor::Rename", // zed specific
+  //   },
+  // },
+  // // Code Action
+  // {
+  //   "context": "Editor && vim_operator == c",
+  //   "bindings": {
+  //     "c": "vim::CurrentLine",
+  //     "a": "editor::ToggleCodeActions", // zed specific
+  //   },
+  // },
 ]
