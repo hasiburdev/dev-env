@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 <port>"
+  exit 1
+fi
+
+TARGET_PORT=$1
+
+echo "Searching for process on port $TARGET_PORT..."
+
+PID=$(lsof -t -i:$TARGET_PORT) || true
+
+if [ -n "$PID" ]; then
+  echo "Killing process on port $TARGET_PORT (PID: $PID)"
+  kill -9 $PID
+else
+  echo "No process found on port $TARGET_PORT"
+fi
