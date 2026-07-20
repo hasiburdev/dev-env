@@ -8,6 +8,9 @@ alias zed="zeditor ."
 # Docker Aliases
 alias dupd="docker compose up -d"
 alias ddown="docker compose down"
+alias dlogs="docker compose logs -f"
+alias dps="docker ps"
+alias dcps="docker compose ps"
 
 
 # NodeJs Related Aliases
