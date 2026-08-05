@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+FLAMESHOT_INSTALL_SCRIPT="install/flameshot.sh"
+FLAMESHOT_SCREENSHOT_DIR="$HOME/Pictures/Flameshot"
+
+# Check if Flameshot is installed
+if ! command -v flameshot &> /dev/null; then
+    echo "Flameshot is not installed. Installing Flameshot..."
+    bash "$FLAMESHOT_INSTALL_SCRIPT"
+fi
+
+# Check if the folder ~/Pictures/Screenshots exists, if not create it
+if [ ! -d "$FLAMESHOT_SCREENSHOT_DIR" ]; then
+    echo "Creating directory: $FLAMESHOT_SCREENSHOT_DIR"
+    mkdir -p "$FLAMESHOT_SCREENSHOT_DIR"
+fi
+
+flameshot gui -p "$FLAMESHOT_SCREENSHOT_DIR/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
