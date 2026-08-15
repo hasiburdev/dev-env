@@ -1,12 +1,12 @@
 #!/bin/bash
 
+# set -euo pipefail
+
 DEV_ENV_HOME=~/Code/hasiburdev/dev-env
 
 source $DEV_ENV_HOME/config/alias.sh
 
 export PATH="$PATH":"$DEV_ENV_HOME/bin:$DEV_ENV_HOME/dev-env-setup"
-
-# export PATH="$HOME/FlutterSdk/flutter/bin:$PATH"
 
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
@@ -24,15 +24,14 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-export PATH="$HOME/develop/flutter/bin:$PATH"
-
-
 export PATH="$PATH:/home/hasibur/.local/bin"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/hasibur/.lmstudio/bin"
 # End of LM Studio CLI section
 
+# Go bin directory
 export PATH="$PATH:$HOME/go/bin"
 
-
+# PHP Composer global bin directory
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"
